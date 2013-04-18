@@ -11,7 +11,7 @@ module Gem::InstallUpdateOptions
   def add_install_update_options
     install_update_options_without_changelog
 
-    add_option 'Install/Update', '--changelog[=LINES]', 'Show LINES lines the changelog of given gem, LINES defaults to 10' do |value, option|
+    add_option :'Install/Update', '--changelog [LINES]', 'Show LINES lines the changelog of given gem, LINES defaults to 10' do |value, option|
       next if @gem_changelog_lines
       @gem_changelog_lines = (value && value =~ OptionParser::DecimalInteger) ? value.to_i : 10
       Gem.post_install do |installer|
