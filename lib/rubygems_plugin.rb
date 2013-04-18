@@ -16,6 +16,7 @@ module Gem::InstallUpdateOptions
         lines = (value && value =~ OptionParser::DecimalInteger) ? value.to_i : 10
         command = Gem::Commands::ChangelogCommand.new
         changelog_file = options[:changelog_name] || command.find_changelog_file(installer.spec)
+        next unless changelog_file
         puts command.show_first_lines(File.join(installer.spec.gem_dir, changelog_file), lines)
       end
     end
